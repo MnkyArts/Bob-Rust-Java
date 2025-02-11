@@ -7,9 +7,9 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4  # Update to the latest checkout version
       - name: Cache Gradle packages
-        uses: actions/cache@v3
+        uses: actions/cache@v4  # Update cache action
         with:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
@@ -21,7 +21,7 @@ jobs:
           java-version: 16
       - name: Package
         run: ./gradlew jpackage
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4  # Updated to v4
         with:
           name: Win-installer
           path: build/distributions/*
